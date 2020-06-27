@@ -1,0 +1,42 @@
+{
+  "name": "main_app",
+  "version": "1.0.0",
+  "description": "Main application for the kickstarter Can I Kick It",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aromot/canikickit_main_app.git"
+  },
+  "keywords": [
+    "main"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aromot/canikickit_main_app/issues"
+  },
+  "homepage": "https://github.com/aromot/canikickit_main_app#readme",
+  "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/preset-react": "^7.10.1",
+    "axios": "^0.19.2",
+    "babel-polyfill": "^6.26.0",
+    "bootstrap": "^4.5.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "dotenv-webpack": "^1.8.0",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-manifest-plugin": "^2.2.0"
+  }
+}
