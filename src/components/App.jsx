@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const App = () => {
+
+  useEffect(() => {
+    
+  }, []);
+
   return (
     <h1>Voici l'appli principale</h1>
   );
