@@ -103,4 +103,4 @@ dist
 # TernJS port file
 .tern-port
 
-CIKI - Main App.code-workspace
+*.code-workspace
