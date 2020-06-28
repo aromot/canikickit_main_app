@@ -4,7 +4,9 @@
   "description": "Main application for the kickstarter Can I Kick It",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack-dev-server --mode development --config webpack.config.dev.js",
+    "build": "set NODE_ENV=production&& webpack -p --config webpack.config.prod.js",
+    "profile": "webpack --profile --json > compilation-stats.json"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,7 @@
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-react": "^7.10.1",
     "axios": "^0.19.2",
+    "babel-loader": "^8.1.0",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.5.0",
     "clean-webpack-plugin": "^3.0.0",
@@ -38,5 +41,9 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
     "webpack-manifest-plugin": "^2.2.0"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1"
   }
 }
