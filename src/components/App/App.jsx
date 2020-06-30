@@ -6,6 +6,7 @@ import globalStyle from './global-style';
 import style from './style';
 import "normalize.css";
 import FormRegister from '../../domains/Users/FormRegister/FormRegister';
+import MessageGlobal from '../MessageGlobal/MessageGlobal';
 
 const App = () => {
 
@@ -29,6 +30,7 @@ const App = () => {
     <>
       <Global styles={globalStyle} />
       <div className={style}>
+        <MessageGlobal />
         <FormRegister />
       </div>
     </>
