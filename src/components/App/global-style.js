@@ -20,7 +20,23 @@ export default {
       border: '1px solid #aaa',
       borderRadius: 5,
       padding: 5,
-      width: '100%'
+      width: '100%',
+    },
+    '.form-validation-error': {
+      color: 'red',
+      display: 'none'
+    },
+    '&.error': {
+      label: {
+        color: 'red',
+      },
+      '.form-control': {
+        borderColor: 'red',
+        color: 'red'
+      },
+      '.form-validation-error': {
+        display: 'block'
+      }
     }
   }
 }

@@ -8,6 +8,9 @@ export default {
   setData(_data) {
     data = { ...data, ..._data };
   },
+  removeData(key) {
+    delete data[key];
+  },
   setRoutes(_routes) {
     routes = _routes;
   },

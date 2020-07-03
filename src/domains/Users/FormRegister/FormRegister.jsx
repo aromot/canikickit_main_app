@@ -47,22 +47,17 @@ const FormRegister = () => {
     }
   }, []);
 
-  console.log('status:', state.status, values);
-
   return (
-    <form style={{width: 300}}>
-      <h1>Inscription</h1>
+    <form style={{width: 300}} onSubmit={submitForm}>
 
       {state.status === 'success' && <MessageBanner type="success">Inscription réussie</MessageBanner>}
 
       <Input label="User name" name="username" />
-    
       <Input label="Email" type="email" name="email" />
-    
       <Input label="Password" type="password" name="password" />
       
       <div>
-        <button type="submit" className="btn" onClick={submitForm} disabled={state.status === 'submitting'}>Inscription</button>
+        <button type="submit" className="btn" disabled={state.status === 'submitting'}>Inscription</button>
       </div>
     </form>
   );

@@ -1,5 +1,6 @@
 import {css} from 'emotion';
 
+
 export default css`
 
   margin: 10px 0;
@@ -13,5 +14,8 @@ export default css`
   }
   &.msg-banner-success {
     background: #06d6a0;
+  }
+  &.msg-banner-error {
+    background: #ef476f;
   }
 `
