@@ -1,5 +1,5 @@
 import React from 'react';
-import FormEdit from '../FormEdit/FormEdit';
+import FormEdit from './FormEdit';
 
 const UserEdit = () => {
   return (

@@ -4,13 +4,14 @@ import Axios from 'axios';
 import MessageBanner from '../../../components/MessageBanner/MessageBanner';
 import UserContext from '../Context/UserContext';
 import { useHistory } from 'react-router-dom';
+import Router from '../../../lib/Router';
+import Input from '../../../components/Forms/Input';
 
 const FormLogin = () => {
 
   const [values, setValues] = useState({
     usernameEmail: 'roger@gmail.com',
     password: 'azerty'
-    // password: 'azertyyyyyyyyyyyyyyyyyyyyyyy'
   });
   const [state, setState] = useState({
     status: 'init'
@@ -18,18 +19,6 @@ const FormLogin = () => {
 
   const userCtx = useContext(UserContext);
   const history = useHistory();
-
-  const Input = ({label, name, type='text'}) => {
-    return (
-      <div className="form-group">
-        <label>{label}</label>
-        <input 
-          value={values[name]} type={type} className="form-control" onChange={evt => {
-          setValues({...values, ...{[name]: evt.target.value}})
-        }} />
-      </div>
-    )
-  };
 
   async function submitForm(evt) {
 
@@ -44,7 +33,7 @@ const FormLogin = () => {
         setState({status: 'error', error: response.data.error});
       } else {
         userCtx.initUser(response.data.user);
-        history.push('/', {hasLogin: true});
+        history.push(Router.getRoute('homepage'), {hasLogin: true});
       }
     } catch (error) {
       console.error(error);
@@ -52,13 +41,17 @@ const FormLogin = () => {
     }
   }
 
+  const handleChange = evt => {
+    setValues({...values, ...{[evt.target.name]: evt.target.value}})
+  }
+
   return (
     <form style={{width: 300}} onSubmit={submitForm}>
 
       {state.status === 'error' && <MessageBanner type="error">{state.error}</MessageBanner>}
 
-      <Input label="User name or email" name="usernameEmail" />
-      <Input label="Password" type="password" name="password" />
+      <Input name="usernameEmail" value={values.usernameEmail} onChange={handleChange}>User name or email</Input>
+      <Input type="password" name="password" value={values.password} onChange={handleChange}>Password</Input>
       
       <div>
         <button type="submit" className="btn" disabled={state.status === 'submitting'}>

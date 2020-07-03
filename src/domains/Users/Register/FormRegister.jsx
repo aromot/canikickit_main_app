@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Backend from '../../../lib/Backend';
 import Axios from 'axios';
 import MessageBanner from '../../../components/MessageBanner/MessageBanner';
+import Input from '../../../components/Forms/Input';
 
 const FormRegister = () => {
 
@@ -10,21 +11,7 @@ const FormRegister = () => {
     email: 'roger@gmail.com',
     password: 'azerty'
   });
-  const [state, setState] = useState({
-    status: 'init'
-  });
-
-  const Input = ({label, name, type='text'}) => {
-    return (
-      <div className="form-group">
-        <label>{label}</label>
-        <input 
-          value={values[name]} type={type} className="form-control" onChange={evt => {
-          setValues({...values, ...{[name]: evt.target.value}})
-        }} />
-      </div>
-    )
-  };
+  const [state, setState] = useState({status: 'init'});
 
   async function submitForm(evt) {
 
@@ -41,20 +28,18 @@ const FormRegister = () => {
     }
   }
 
-  useEffect(() => {
-    return () => {
-      setState({status: 'init'});
-    }
-  }, []);
+  const handleChange = evt => {
+    setValues({...values, ...{[evt.target.name]: evt.target.value}})
+  }
 
   return (
     <form style={{width: 300}} onSubmit={submitForm}>
 
       {state.status === 'success' && <MessageBanner type="success">Inscription réussie</MessageBanner>}
 
-      <Input label="User name" name="username" />
-      <Input label="Email" type="email" name="email" />
-      <Input label="Password" type="password" name="password" />
+      <Input name="username" onChange={handleChange} value={values.username}>User name</Input>
+      <Input type="email" name="email" onChange={handleChange} value={values.email}>Email</Input>
+      <Input type="password" name="password" onChange={handleChange} value={values.password}>Password</Input>
       
       <div>
         <button type="submit" className="btn" disabled={state.status === 'submitting'}>Inscription</button>

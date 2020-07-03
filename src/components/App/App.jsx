@@ -10,11 +10,16 @@ import NavbarTop from '../NavbarTop/NavbarTop';
 import Loader from '../Loader/Loader';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import UserContext from '../../domains/Users/Context/UserContext';
-import UserEdit from '../../domains/Users/Edit/UserEdit';
+import Router from '../../lib/Router';
+import ResetPassword from '../../domains/Users/ResetPassword/ResetPassword';
 
-const Homepage = React.lazy(() => import(/* webpackChunkName: "Homepage" */ '../../domains/Homepage')),
+const 
+  Homepage = React.lazy(() => import(/* webpackChunkName: "Homepage" */ '../../domains/Homepage')),
   Register = React.lazy(() => import(/* webpackChunkName: "Register" */ '../../domains/Users/Register/Register')),
-  Login = React.lazy(() => import(/* webpackChunkName: "Login" */ '../../domains/Users/Login/Login'));
+  Login = React.lazy(() => import(/* webpackChunkName: "Login" */ '../../domains/Users/Login/Login')),
+  UserEdit = React.lazy(() => import(/* webpackChunkName: "UserEdit" */ '../../domains/Users/Edit/UserEdit')),
+  ForgotPassword = React.lazy(() => import(/* webpackChunkName: "ForgotPassword" */ '../../domains/Users/ForgotPassword/ForgotPassword'))
+;
 
 const App = () => {
 
@@ -54,21 +59,29 @@ const App = () => {
 
   const routes = [
     {
-      path: '/',
+      path: Router.getRoute('homepage'),
       exact: true,
       component: () => <Homepage />
     },
     {
-      path: '/register',
+      path: Router.getRoute('userRegister'),
       component: () => <Register />
     },
     {
-      path: '/login',
+      path: Router.getRoute('userLogin'),
       component: () => <Login />
     },
     {
-      path: '/users/edit',
+      path: Router.getRoute('userEdit'),
       component: () => <UserEdit />
+    },
+    {
+      path: Router.getRoute('userForgotPassword'),
+      component: () => <ForgotPassword />
+    },
+    {
+      path: Router.getRoute('userResetPassword'),
+      component: () => <ResetPassword />
     }
   ];
 

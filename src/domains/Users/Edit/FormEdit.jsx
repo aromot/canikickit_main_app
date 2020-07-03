@@ -3,27 +3,7 @@ import Backend from '../../../lib/Backend';
 import Axios from 'axios';
 import MessageBanner from '../../../components/MessageBanner/MessageBanner';
 import UserContext from '../Context/UserContext';
-
-const Input = ({children, name, value, type='text', error, onChange}) => {
-
-  const ref = useRef();
-
-  const cn = ['form-group'];
-  error && cn.push('error');
-
-  const _onChange = e => {
-    onChange(e);
-    ref.current.classList.remove('error');
-  }
-
-  return (
-    <div className={cn.join(' ')} ref={ref}>
-      <label>{children}</label>
-      <input name={name} value={value} type={type} className="form-control" onChange={_onChange} />
-      {error && <div className="form-validation-error">{error}</div>}
-    </div>
-  )
-};
+import Input from '../../../components/Forms/Input';
 
 const FormEdit = () => {
 
