@@ -37,7 +37,7 @@ const getEntry = name => {
   return entry;
 };
 
-const getOutput = (appName, env) => {
+const getOutput = (env, prodPath, prodPublicPath) => {
   switch (env) {
     case 'dev':
       return {
@@ -49,8 +49,8 @@ const getOutput = (appName, env) => {
     
     case 'prod':
       return {
-        path: path.resolve('../../backend/public/assets/' + appName),
-        publicPath: '/assets/' + appName + '/',
+        path: prodPath,
+        publicPath: prodPublicPath,
         filename: '[name].[chunkhash].js',
         chunkFilename: '[name].[chunkhash].js'
       };
@@ -168,10 +168,13 @@ const getOptimization = () => {
   // }
 };
 
-const getConfig = (appName, env) => {
+const getConfig = ({appName, env, prodPath = '', prodPublicPath = ''}) => {
+
+  env = env.toLowerCase();
+
   return {
     entry: getEntry(appName),
-    output: getOutput(appName, env),
+    output: getOutput(env, prodPath, prodPublicPath),
     module: getLoaders(),
     plugins: getPlugins(env),
     resolve: getResolvers(),

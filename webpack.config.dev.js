@@ -5,5 +5,8 @@ module.exports = env => {
   env = env || {};
   console.log('env=', env);
 
-  return getConfig('main_app', 'dev');
+  return getConfig({
+    appName: 'main_app',
+    env: 'dev'
+  });
 };
