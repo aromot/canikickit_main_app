@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Input from '../../../components/Forms/Input';
-import Backend from '../../../lib/Backend';
+import Input from '../../../../components/Forms/Input';
+import Backend from '../../../../lib/Backend';
 import Axios from 'axios';
-import MessageBanner from '../../../components/MessageBanner/MessageBanner';
+import MessageBanner from '../../../../components/MessageBanner/MessageBanner';
 
 const FormForgotPassword = () => {
 

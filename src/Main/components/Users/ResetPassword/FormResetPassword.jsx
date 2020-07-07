@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Backend from '../../../lib/Backend';
+import Backend from '../../../../lib/Backend';
 import Axios from 'axios';
-import Input from '../../../components/Forms/Input';
-import MessageBanner from '../../../components/MessageBanner/MessageBanner';
+import Input from '../../../../components/Forms/Input';
+import MessageBanner from '../../../../components/MessageBanner/MessageBanner';
 import { useHistory } from 'react-router-dom';
-import Router from '../../../lib/Router';
+import Router from '../../../../lib/Router';
 
 const FormResetPassword = ({resetKey}) => {
 

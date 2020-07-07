@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
-import Backend from '../../../lib/Backend';
+import Backend from '../../../../lib/Backend';
 import Axios from 'axios';
-import MessageBanner from '../../../components/MessageBanner/MessageBanner';
+import MessageBanner from '../../../../components/MessageBanner/MessageBanner';
 import UserContext from '../Context/UserContext';
-import Input from '../../../components/Forms/Input';
+import Input from '../../../../components/Forms/Input';
 
 const FormEdit = () => {
 

@@ -1,25 +1,33 @@
 import React, { useEffect, useState, useCallback, useMemo, Suspense } from 'react';
-import Backend from '../../lib/Backend';
+import Backend from '../lib/Backend';
 import Axios from 'axios';
 import { Global } from '@emotion/core';
 import globalStyle from './global-style';
 import style from './style';
 import "normalize.css";
-import MessageGlobal from '../MessageGlobal/MessageGlobal';
-import NavbarTop from '../NavbarTop/NavbarTop';
-import Loader from '../Loader/Loader';
+// import MessageGlobal from '../components/MessageGlobal/MessageGlobal';
+import NavbarTop from '../components/NavbarTop/NavbarTop';
+import Loader from '../components/Loader/Loader';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import UserContext from '../../domains/Users/Context/UserContext';
-import Router from '../../lib/Router';
-import ResetPassword from '../../domains/Users/ResetPassword/ResetPassword';
+import UserContext from '../Main/components/Users/Context/UserContext';
 
-const 
-  Homepage = React.lazy(() => import(/* webpackChunkName: "Homepage" */ '../../domains/Homepage')),
-  Register = React.lazy(() => import(/* webpackChunkName: "Register" */ '../../domains/Users/Register/Register')),
-  Login = React.lazy(() => import(/* webpackChunkName: "Login" */ '../../domains/Users/Login/Login')),
-  UserEdit = React.lazy(() => import(/* webpackChunkName: "UserEdit" */ '../../domains/Users/Edit/UserEdit')),
-  ForgotPassword = React.lazy(() => import(/* webpackChunkName: "ForgotPassword" */ '../../domains/Users/ForgotPassword/ForgotPassword'))
-;
+// Routes
+import Main from '../Main/components/Main';
+import Admin from '../Admin/components/Admin';
+import Router from '../lib/Router';
+
+const routes = [
+  {
+    path: '/' + Router.getPrefix('admin'),
+    component: () => <Admin />
+  },
+  {
+    path: '/' + Router.getPrefix('main'),
+    component: () => <Main />
+  }
+];
+
+console.log('routes:', routes);
 
 const App = () => {
 
@@ -57,34 +65,6 @@ const App = () => {
     return {user, initUser}
   }, [user, initUser]);
 
-  const routes = [
-    {
-      path: Router.getRoute('homepage'),
-      exact: true,
-      component: () => <Homepage />
-    },
-    {
-      path: Router.getRoute('userRegister'),
-      component: () => <Register />
-    },
-    {
-      path: Router.getRoute('userLogin'),
-      component: () => <Login />
-    },
-    {
-      path: Router.getRoute('userEdit'),
-      component: () => <UserEdit />
-    },
-    {
-      path: Router.getRoute('userForgotPassword'),
-      component: () => <ForgotPassword />
-    },
-    {
-      path: Router.getRoute('userResetPassword'),
-      component: () => <ResetPassword />
-    }
-  ];
-
   if(status !== 'success')
     return <Loader />;
 
@@ -100,7 +80,7 @@ const App = () => {
                 return (
                   <Route key={'route_'+i} path={route.path} exact={('exact' in route) || false}>
                     <div className={style}>
-                      <MessageGlobal />
+                      {/* <MessageGlobal /> */}
                       <route.component />
                     </div>
                   </Route>

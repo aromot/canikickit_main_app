@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Router from '../lib/Router';
-import Backend from '../lib/Backend';
+import Router from '../../lib/Router';
+import Backend from '../../lib/Backend';
 import Axios from 'axios';
 
 const installRoles = async () => {
@@ -42,6 +42,9 @@ const Homepage = () => {
         </li>
         <li>
           <Link to={Router.getRoute('userForgotPassword')}>forgot password?</Link>
+        </li>
+        <li>
+          <Link to={Router.getRoute('admin.home')}>Admin</Link>
         </li>
         {rolesInstalled === false && 
           <li>

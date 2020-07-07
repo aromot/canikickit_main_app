@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import style from './style';
 import Backend from '../../lib/Backend';
 import { Link, useHistory } from 'react-router-dom';
-import UserContext from '../../domains/Users/Context/UserContext';
+import UserContext from '../../Main/components/Users/Context/UserContext';
 import Axios from 'axios';
 import Router from '../../lib/Router';
 

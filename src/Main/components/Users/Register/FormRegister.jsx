@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Backend from '../../../lib/Backend';
+import Backend from '../../../../lib/Backend';
 import Axios from 'axios';
-import MessageBanner from '../../../components/MessageBanner/MessageBanner';
-import Input from '../../../components/Forms/Input';
+import MessageBanner from '../../../../components/MessageBanner/MessageBanner';
+import Input from '../../../../components/Forms/Input';
 
 const FormRegister = () => {
 
